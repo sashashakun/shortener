@@ -18,7 +18,8 @@ defmodule ShortenerWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/links", LinkController, except: [:edit, :update]
+    resources "/links", LinkController, except: [:show, :edit, :update]
+    get "/links/:key", LinkController, :show
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                               singleton: true
