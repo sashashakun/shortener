@@ -1,5 +1,7 @@
 # Shortener
 
+[![Elixir CI](https://github.com/sashashakun/shortener/actions/workflows/default.yml/badge.svg?branch=master)](https://github.com/sashashakun/shortener/actions/workflows/default.yml)
+
 Here I will do my little tiny URL shortener to practice Elixir, Phoenix and system design.
 
 User scenarious I want to cover first:
