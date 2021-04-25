@@ -18,7 +18,7 @@ defmodule ShortenerWeb.SessionController do
       {:error, :unauthorized} ->
         conn
         |> put_flash(:error, "Bad email/password combination")
-        |> redirect(to: Routes.session_path(conn, :new))
+        |> redirect(to: session_path(conn, :new))
     end
   end
 

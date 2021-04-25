@@ -18,9 +18,7 @@ defmodule ShortenerWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/hello", HelloController, :index
-    get "/hello/:messenger", HelloController, :show
-    resources "/url", UrlController, except: [:edit, :update]
+    resources "/links", LinkController, except: [:edit, :update]
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                               singleton: true
@@ -28,12 +26,6 @@ defmodule ShortenerWeb.Router do
 
   scope "/api", ShortenerWeb do
     pipe_through :api
-  end
-
-  scope "/cms", ShortenerWeb.CMS, as: :cms do
-    pipe_through [:browser, :authenticate_user]
-
-    resources "/pages", PageController
   end
 
   defp authenticate_user(conn, _) do
