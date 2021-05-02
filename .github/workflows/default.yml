@@ -8,9 +8,18 @@ on:
 
 jobs:
   build:
-
     name: Build and test
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12.3
+        env:
+          POSTGRES_DB: 'postgres'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'password'
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v2
@@ -19,13 +28,19 @@ jobs:
       with:
         elixir-version: '1.10.3' # Define the elixir version [required]
         otp-version: '22.3' # Define the OTP version [required]
+
     - name: Restore dependencies cache
       uses: actions/cache@v2
       with:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
+
     - name: Install dependencies
       run: mix deps.get
+
+    - name: Run migrations
+      run: mix ecto.create
+
     - name: Run tests
       run: mix test
