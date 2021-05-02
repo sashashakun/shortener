@@ -51,7 +51,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :shortener, Shortener.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "alex.shakun",
   password: "password",
   database: "postgres",
   hostname: "localhost",

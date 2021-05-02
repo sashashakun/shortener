@@ -15,7 +15,7 @@ jobs:
       postgres:
         image: postgres:12.3
         env:
-          POSTGRES_DB: postgres
+          POSTGRES_DB: shortener_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
         ports:
