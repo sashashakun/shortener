@@ -54,7 +54,7 @@ config :shortener, Shortener.Repo,
   username: "postgres",
   password: "password",
   database: "postgres",
-  hostname: "db",
+  hostname: "localhost",
   pool_size: 10
 
 #   We are all set! Go into your application by running:
