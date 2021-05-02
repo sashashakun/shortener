@@ -41,5 +41,3 @@ defmodule ShortenerWeb.Router do
     end
   end
 end
-
-# Now, let's fire up the server with mix phx.server and visit http://localhost:4000/cms/pages. If we haven't logged in yet, we'll be redirected to the home page with a flash error message telling us to sign in. Let's sign in at http://localhost:4000/sessions/new, then re-visit http://localhost:4000/cms/pages. Now that we're authenticated, we should see a familiar resource listing for pages, with a New Page link.

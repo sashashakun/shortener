@@ -51,10 +51,10 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :shortener, Shortener.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "alex.shakun",
+  username: "postgres",
   password: "password",
   database: "postgres",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10
 
 #   We are all set! Go into your application by running:
