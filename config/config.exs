@@ -17,13 +17,6 @@ config :shortener, ShortenerWeb.Endpoint,
   pubsub: [name: Shortener.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-# Configure your database
-config :shortener, ShortenerWeb.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: true
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
