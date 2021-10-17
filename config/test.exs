@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :shortener, Shortener.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "alex.shakun",
   password: "password",
   database: "shortener_test",
   hostname: "localhost",

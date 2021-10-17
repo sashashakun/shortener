@@ -27,14 +27,14 @@ defmodule ShortenerWeb.LinkControllerTest do
   end
 
   describe "create link" do
-    test "redirects to show when data is valid", %{conn: conn} do
+    test "redirects to edit when data is valid", %{conn: conn} do
       conn = post conn, link_path(conn, :create), link: @create_attrs
 
       assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == link_path(conn, :show, id)
+      assert redirected_to(conn) == link_path(conn, :edit, id)
 
-      conn = get conn, link_path(conn, :show, id)
-      assert html_response(conn, 200) =~ "Show Link"
+      conn = get conn, link_path(conn, :edit, id)
+      assert html_response(conn, 200) =~ "Link created successfully."
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -57,10 +57,10 @@ defmodule ShortenerWeb.LinkControllerTest do
 
     test "redirects when data is valid", %{conn: conn, link: link} do
       conn = put conn, link_path(conn, :update, link), link: @update_attrs
-      assert redirected_to(conn) == link_path(conn, :show, link)
+      assert redirected_to(conn) == link_path(conn, :edit, link)
 
-      conn = get conn, link_path(conn, :show, link)
-      assert html_response(conn, 200) =~ "some updated original_url"
+      conn = get conn, link_path(conn, :edit, link)
+      assert html_response(conn, 200) =~ "Link updated successfully."
     end
 
     test "renders errors when data is invalid", %{conn: conn, link: link} do
