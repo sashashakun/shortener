@@ -56,19 +56,3 @@ config :shortener, Shortener.Repo,
   database: "postgres",
   hostname: "localhost",
   pool_size: 10
-
-#   We are all set! Go into your application by running:
-
-#     $ cd shortener
-
-# Then configure your database in config/dev.exs and run:
-
-#     $ mix ecto.create
-
-# Start your Phoenix app with:
-
-#     $ mix phx.server
-
-# You can also run your app inside IEx (Interactive Elixir) as:
-
-#     $ iex -S mix phx.server
