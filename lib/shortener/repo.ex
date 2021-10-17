@@ -1,5 +1,5 @@
 defmodule Shortener.Repo do
-  use Ecto.Repo, otp_app: :shortener
+  use Ecto.Repo, otp_app: :shortener, adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the
