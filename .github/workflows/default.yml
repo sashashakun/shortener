@@ -16,7 +16,7 @@ jobs:
         image: postgres:12.3
         env:
           POSTGRES_DB: shortener_test
-          POSTGRES_USER: postgres
+          POSTGRES_USER: alex.shakun
           POSTGRES_PASSWORD: password
         ports:
           - 5432:5432
