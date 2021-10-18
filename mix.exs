@@ -41,7 +41,8 @@ defmodule Shortener.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 2.7"},
-      {:plug_cowboy, "~> 2.5.2"}
+      {:plug_cowboy, "~> 2.5.2"},
+      {:poison, "~> 3.1.0"}
     ]
   end
 
