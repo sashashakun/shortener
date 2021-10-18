@@ -4,7 +4,6 @@
   "scripts": {
     "deploy": "brunch build --production",
     "watch": "brunch watch --stdin",
-    "kek": "cd .. && mix assets.deploy && rm -f _build/esbuild"
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
