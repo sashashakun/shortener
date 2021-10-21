@@ -17,7 +17,7 @@ defmodule ShortenerWeb.Router do
   scope "/", ShortenerWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", LinkController, :index
     resources "/links", LinkController, except: [:show]
     get "/links/:key", LinkController, :show
     resources "/users", UserController
