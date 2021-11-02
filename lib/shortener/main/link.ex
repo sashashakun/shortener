@@ -16,5 +16,6 @@ defmodule Shortener.Main.Link do
     link
     |> cast(attrs, [:original_url, :shortened_url, :views_count])
     |> validate_required([:original_url, :shortened_url])
+    |> unique_constraint(:shortened_url, message: "such short url already exists", name: "links_shortened_url_index")
   end
 end
