@@ -35,5 +35,4 @@ defmodule ShortenerWeb.ConnCase do
     end
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

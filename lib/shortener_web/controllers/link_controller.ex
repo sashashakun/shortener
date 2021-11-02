@@ -31,7 +31,7 @@ defmodule ShortenerWeb.LinkController do
     case Main.update_link(link, %{ views_count: new_count }) do
       {:ok, link} ->
         redirect(conn, external: "http://#{link.original_url}");
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error} ->
         conn
         |> put_flash(:error, "something bad happened")
     end
