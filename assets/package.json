@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "brunch build --production",
-    "kek": "brunch build",
+    "build": "brunch build",
     "watch": "brunch watch --stdin"
   },
   "dependencies": {

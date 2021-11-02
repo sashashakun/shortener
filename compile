@@ -1,7 +1,7 @@
 if [ -f "$assets_dir/yarn.lock" ]; then
   yarn deploy
 else
-  npm run kek
+  npm run build
 fi
 
 cd $phoenix_dir
