@@ -27,8 +27,14 @@ defmodule ShortenerWeb.LinkController do
 
   def show(conn, %{"key" => key}) do
     link = Main.get_link_by!(key)
-    #  redirect does not work w/o "http"
-    redirect(conn, external: link.original_url);
+    new_count = (link.views_count || 0) + 1
+    case Main.update_link(link, %{ views_count: new_count }) do
+      {:ok, link} ->
+        redirect(conn, external: "http://#{link.original_url}");
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "something bad happened")
+    end
   end
 
   def edit(conn, %{"id" => id}) do

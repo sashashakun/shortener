@@ -3,8 +3,8 @@ defmodule ShortenerWeb.LinkControllerTest do
 
   alias Shortener.Main
 
-  @create_attrs %{original_url: "some original_url", shortened_url: "some shortened_url"}
-  @update_attrs %{original_url: "some updated original_url", shortened_url: "some updated shortened_url"}
+  @create_attrs %{original_url: "some_original_url", shortened_url: "some_shortened_url"}
+  @update_attrs %{original_url: "some_updated original_url", shortened_url: "some_updated_shortened_url"}
   @invalid_attrs %{original_url: nil, shortened_url: nil}
 
   def fixture(:link) do
@@ -15,7 +15,7 @@ defmodule ShortenerWeb.LinkControllerTest do
   describe "index" do
     test "lists all links", %{conn: conn} do
       conn = get conn, link_path(conn, :index)
-      assert html_response(conn, 200) =~ "Listing Links"
+      assert html_response(conn, 200) =~ "Links"
     end
   end
 
@@ -23,6 +23,15 @@ defmodule ShortenerWeb.LinkControllerTest do
     test "renders form", %{conn: conn} do
       conn = get conn, link_path(conn, :new)
       assert html_response(conn, 200) =~ "New Link"
+    end
+  end
+
+  describe "open link" do
+    setup [:create_link]
+
+    test "redirects to original url", %{conn: conn, link: link} do
+      conn = get conn, link_path(conn, :show, link.shortened_url)
+      assert redirected_to(conn) == "http://#{link.original_url}"
     end
   end
 
