@@ -1,7 +1,6 @@
 defmodule ShortenerWeb.LinkController do
   use ShortenerWeb, :controller
   use Timex
-  require Logger
 
   alias Shortener.Main
   alias Shortener.Main.Link
