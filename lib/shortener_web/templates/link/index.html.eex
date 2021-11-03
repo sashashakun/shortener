@@ -14,11 +14,10 @@
 <%= for link <- @links do %>
     <tr>
       <td><%= link.original_url %></td>
-      <td><%= link.shortened_url %></td>
+      <td><%= link link.shortened_url, to: "/links/#{link.shortened_url}", target: "_blank", rel: "noopener noreferrer" %></td>
       <td><%= link.views_count %></td>
 
       <td class="text-right">
-        <span><%= link "Show", to: link_path(@conn, :show, link), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Edit", to: link_path(@conn, :edit, link), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Delete", to: link_path(@conn, :delete, link), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
