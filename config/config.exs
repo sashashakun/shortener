@@ -15,7 +15,7 @@ config :shortener, ShortenerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Nhr/ywfuA1Qx6/EIl/KwGSUZrP8RtbryBfuEzbbrvee0TfCRHUDbeNezGdRvtsVh",
   render_errors: [view: ShortenerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Shortener.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: Shortener.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,

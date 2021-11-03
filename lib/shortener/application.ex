@@ -14,6 +14,7 @@ defmodule Shortener.Application do
       supervisor(ShortenerWeb.Endpoint, []),
       # Start your own worker by calling: Shortener.Worker.start_link(arg1, arg2, arg3)
       # worker(Shortener.Worker, [arg1, arg2, arg3]),
+      {Phoenix.PubSub, [name: Shortener.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
