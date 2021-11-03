@@ -1,6 +1,5 @@
 defmodule ShortenerWeb.LinkControllerTest do
   use ShortenerWeb.ConnCase
-  require Logger
 
   alias Shortener.Main
 
