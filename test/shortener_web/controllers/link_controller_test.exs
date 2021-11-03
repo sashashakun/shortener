@@ -1,14 +1,21 @@
 defmodule ShortenerWeb.LinkControllerTest do
   use ShortenerWeb.ConnCase
+  require Logger
 
   alias Shortener.Main
 
   @create_attrs %{original_url: "some_original_url", shortened_url: "some_shortened_url"}
-  @update_attrs %{original_url: "some_updated original_url", shortened_url: "some_updated_shortened_url"}
+  @expired_attrs %{original_url: "some_original_url", shortened_url: "some_shortened_url", live_time: 0}
+  @update_attrs %{original_url: "some_updated_original_url", shortened_url: "some_updated_shortened_url"}
   @invalid_attrs %{original_url: nil, shortened_url: nil}
 
   def fixture(:link) do
     {:ok, link} = Main.create_link(@create_attrs)
+    link
+  end
+
+  def fixture_expired(:link) do
+    {:ok, link} = Main.create_link(@expired_attrs)
     link
   end
 
@@ -32,6 +39,15 @@ defmodule ShortenerWeb.LinkControllerTest do
     test "redirects to original url", %{conn: conn, link: link} do
       conn = get conn, link_path(conn, :show, link.shortened_url)
       assert redirected_to(conn) == "http://#{link.original_url}"
+    end
+  end
+
+  describe "open expired link" do
+    setup [:create_expired_link]
+
+    test "does not redirect to original url", %{conn: conn, link: link} do
+      conn = get conn, link_path(conn, :show, link.shortened_url)
+      assert redirected_to(conn) == link_path(conn, :index)
     end
   end
 
@@ -92,6 +108,11 @@ defmodule ShortenerWeb.LinkControllerTest do
 
   defp create_link(_) do
     link = fixture(:link)
+    {:ok, link: link}
+  end
+
+  defp create_expired_link(_) do
+    link = fixture_expired(:link)
     {:ok, link: link}
   end
 end

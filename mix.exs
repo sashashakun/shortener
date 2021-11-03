@@ -42,7 +42,8 @@ defmodule Shortener.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 2.7"},
       {:plug_cowboy, "~> 2.5.2"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:timex, "~> 3.7.6"}
     ]
   end
 

@@ -1,5 +1,7 @@
 defmodule ShortenerWeb.LinkController do
   use ShortenerWeb, :controller
+  use Timex
+  require Logger
 
   alias Shortener.Main
   alias Shortener.Main.Link
@@ -27,13 +29,23 @@ defmodule ShortenerWeb.LinkController do
 
   def show(conn, %{"key" => key}) do
     link = Main.get_link_by!(key)
-    new_count = (link.views_count || 0) + 1
-    case Main.update_link(link, %{ views_count: new_count }) do
-      {:ok, link} ->
-        redirect(conn, external: "http://#{link.original_url}");
-      {:error} ->
-        conn
-        |> put_flash(:error, "something bad happened")
+
+    link_works_until = Timex.shift(link.inserted_at, minutes: link.live_time)
+    is_expired = Timex.before?(link_works_until, Timex.now())
+
+    if (is_expired) do
+      conn
+      |> put_flash(:error, "Link expired")
+      |> redirect(to: link_path(conn, :index))
+    else
+      new_count = (link.views_count || 0) + 1
+      case Main.update_link(link, %{ views_count: new_count }) do
+        {:ok, link} ->
+          redirect(conn, external: "http://#{link.original_url}");
+        {:error} ->
+          conn
+          |> put_flash(:error, "something bad happened")
+      end
     end
   end
 

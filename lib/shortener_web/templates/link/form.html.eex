@@ -18,6 +18,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :live_time, "Live time in minutes", class: "control-label" %>
+    <%= text_input f, :live_time, class: "form-control" %>
+    <%= error_tag f, :live_time %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
