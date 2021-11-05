@@ -4,6 +4,8 @@
 
 Here I will do my little tiny URL shortener to practice Elixir, Phoenix and system design.
 
+Deployed to [heroku](https://my-tiny-shortener.herokuapp.com/)
+
 User scenarious I want to cover first:
 
 1. ~I want to set expiration time for short url~
